@@ -25,7 +25,7 @@ TKroot = Tk()
 TKroot.title("Hello")
 
 root = Frame(TKroot)
-root.pack(fill=BOTH)
+root.pack(fill=BOTH, expand=1)
 
 root.columnconfigure(0, weight=1)
 root.columnconfigure(1, weight=2)
