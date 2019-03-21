@@ -14,31 +14,29 @@ def paint(n):
         
 
 def add(event):
-    f = Frame(root)
-    bs.append(Button(f, text="BUTTON"))
-    bs[-1].grid(row=0, column=0)
+    bs.append(Button(root, text="BUTTON"))
+    bs[-1].grid(row=len(bs), column=0, sticky=E+W+S+N)
     bs[-1].bind('<Button-1>', lambda e, n=len(bs)-1: paint(n))
-    ls.append(Label(f, text="LABEL"))
-    ls[-1].grid(row=0, column=1)
-    f.grid()
-    print(event)
-
+    ls.append(Label(root, text="LABEL"))
+    ls[-1].grid(row=len(ls), column=1, sticky=E+W+S+N)
+    root.rowconfigure(len(ls), weight=1)
+    
 TKroot = Tk()
 TKroot.title("Hello")
 
 root = Frame(TKroot)
 root.place(relx=0, rely=0, relheight=1, relwidth=1)
 
-#root.columnconfigure(0, weight=1)
-#root.columnconfigure(1, weight=2)
-#root.rowconfigure(0, weight=10)
-#root.rowconfigure(1, weight=1)
+root.columnconfigure(0, weight=1)
+root.columnconfigure(1, weight=2)
+#root.rowconfigure(0, weight=1)
+
 
 Butt = Button(root, text="Add")
 Butt.bind('<Button-1>', add)
-Butt.grid(row=0, column=0)
+Butt.grid(row=0, column=0, sticky=E+W+S+N)
 Exit = Button(root, text="Exit", command=root.quit)
-Exit.grid(row=0, column=1)
+Exit.grid(row=0, column=1, sticky=E+W+S+N)
 
 TKroot.mainloop()
 print("Done")
